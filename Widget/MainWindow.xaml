@@ -5,19 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Widget"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="818.8" Loaded="MainWindow_Loaded">
+        Title="MainWindow" Height="450" Width="820" Loaded="MainWindow_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-
         </Grid.RowDefinitions>
 
-        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
-            <Canvas Background="LightGray" Width="Auto" Height="50" x:Name="straightedge">
-            </Canvas>
-        </ScrollViewer>
+        <Border Grid.Row="0" Background="#adafb3" BorderBrush="Black" BorderThickness="1">
+            <Canvas Background="#adafb3" x:Name="straightedge"></Canvas>
+        </Border>
+
+        <Border Grid.Row="1" Background="#adafb3" BorderBrush="Black" BorderThickness="1">
+            <Grid Background="#bdc1c7">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="pending.png" VerticalAlignment="Center" Margin="14,0,0,0" Width="12"/>
+                    <TextBlock VerticalAlignment="Center" FontSize="10" x:Name="Pending">16 Pending</TextBlock>
+                    <Image Source="jeopardy.png" VerticalAlignment="Center" Margin="14,0,0,0" Width="12"/>
+                    <TextBlock VerticalAlignment="Center" FontSize="10" x:Name="Jeopardy">17 Jeopardy</TextBlock>
+                    <Image Source="Completed.png" VerticalAlignment="Center" Margin="14,0,0,0" Width="12"/>
+                    <TextBlock VerticalAlignment="Center" FontSize="10" x:Name="Completed">19 Completed</TextBlock>
+                    <Button  Height="18" Width="100" FontSize="10" Margin="445, 0, 0, 0" Background="Transparent" BorderThickness="0" x:Name="Generate">
+                        <Image Source="Generate_Schedule.png" VerticalAlignment="Center"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+       
 
         <!--<ScrollViewer HorizontalScrollBarVisibility="Auto"
               PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">

@@ -106,5 +106,11 @@
     <Resource Include="Item_Left.png" />
     <Resource Include="Item_Right.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pending.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="jeopardy.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

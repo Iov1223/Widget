@@ -27,6 +27,28 @@ namespace Widget
         }
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            GenerateStraightedge();
+            GenerateGrid();
+        }
+        private double NumberOfElements()
+        {
+            Random random = new Random();
+            double randomNumber = random.Next(5600, 56000);
+            return randomNumber;
+        }
+
+        private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            ScrollViewer scrollviewer = sender as ScrollViewer;
+            if (e.Delta > 0)
+                scrollviewer.LineLeft();
+            else
+                scrollviewer.LineRight();
+            e.Handled = true;
+        }
+
+        private void GenerateStraightedge()
+        {
             Line line;
             TextBlock textBlockNum;
             TextBlock textBlockDate = new TextBlock
@@ -37,8 +59,8 @@ namespace Widget
                 FontSize = 10,
                 FontWeight = FontWeights.Bold
             };
-            straightedge.Children.Add(textBlockDate);
-            for (double i = 10, num = 0; i <= 800; i += 56)
+            Straightedge.Children.Add(textBlockDate);
+            for (int i = 10, num = 0; i <= 800; i += 56)
             {
                 if (i == 10 || i == 794)
                 {
@@ -73,11 +95,11 @@ namespace Widget
                 };
                 num += 5;
 
-                straightedge.Children.Add(line);
+                Straightedge.Children.Add(line);
                 if (i != 794)
-                    straightedge.Children.Add(textBlockNum);
+                    Straightedge.Children.Add(textBlockNum);
 
-                for (double j = 21.2; j <= 784; j += 11.2)
+                for (double j = 21.2; j <= 800; j += 11.2)
                 {
                     Line lineSmall = new Line
                     {
@@ -89,7 +111,7 @@ namespace Widget
                         StrokeThickness = 0.1
                     };
                     if (j != i)
-                        straightedge.Children.Add(lineSmall);
+                        Straightedge.Children.Add(lineSmall);
                 }
             }
             //this.Title = NumberOfElements().ToString();
@@ -97,22 +119,24 @@ namespace Widget
             //tree.Insert(10, "Значение 1");
             //tree.Insert(20, "Значение 2");
         }
-        private double NumberOfElements()
+
+        private void GenerateGrid()
         {
-            Random random = new Random();
-            double randomNumber = random.Next(5600, 56000);
-            return randomNumber;
+            for (int i = 0, point = 10; i < 30; i++, point += 56)
+            {
+                Rectangle rect = new Rectangle
+                {
+                    Fill = new SolidColorBrush(Colors.Blue),
+                    Width = 56,
+                    Height = 20,
+                    Margin = new Thickness(point, 0, 0, 0)
+                };
+
+                ScheduleCanvas.Children.Add(rect);
+            }
+
         }
 
-        private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
-        {
-            ScrollViewer scrollviewer = sender as ScrollViewer;
-            if (e.Delta > 0)
-                scrollviewer.LineLeft();
-            else
-                scrollviewer.LineRight();
-            e.Handled = true;
-        }
     }
 }
 
